@@ -1,0 +1,78 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="CRMS.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>CRMS Application</title>
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <%-- Offline Bootstrap --%>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+
+</head>
+<body>
+    <form runat="server">
+        <header>
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">College Result Management System</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="Default.aspx"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                            <li><a href="About.aspx">About</a></li>
+                            <li><a href="Contact.aspx">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+        </header>
+        <div id="body">
+            <section class="content-wrapper main-content clear-fix">
+                <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+            </section>
+        </div>
+        <footer class="text-center" style="background-color: black; position: fixed; bottom: 0px; color: white; width: 100%">
+            <div class="container">
+                <div class="text-center">
+                    © 2020 Copyright:
+    <a class="text-white">CRMS | Sakshi Gupta</a>
+                </div>
+            </div>
+        </footer>
+        <div class="row-fluid">
+            <div class="custom-alert">
+                <asp:CustomValidator ID="cvAlert" Display="Dynamic" Visible="false" EnableViewState="false"
+                    runat="server" SetFocusOnError="true" ErrorMessage="CustomValidator"></asp:CustomValidator>
+                <asp:Literal ID="ltrClientSideModal" runat="server"></asp:Literal>
+            </div>
+        </div>
+    </form>
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        showServerModal();
+    });
+
+    function showServerModal() {
+        setTimeout(function () { $('#server-modal').modal('show'); }, 100);
+        $('#cvAlert').show();
+    }
+</script>
+</html>
